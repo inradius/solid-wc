@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "paths": {
+      "@app": ["./src/apps/app"],
+      "@app/*": ["./src/apps/app/*"],
+      "@dist/*": ["./dist/*"],
+      "@mocks/*": ["./src/mocks/*"],
+      "@tools/*": ["./tools/*"]
+    },
+    "strict": true,
+    "target": "esnext",
+    "types": ["vite/client", "@testing-library/jest-dom"]
+  },
+  "include": ["dist", "src", "tools"]
+}
