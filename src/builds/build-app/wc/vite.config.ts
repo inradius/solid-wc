@@ -1,6 +1,7 @@
 import { resolve } from 'node:path';
 import { defineConfig, mergeConfig } from 'vite';
 import { version } from '../../../../package.json';
+import vitePluginCssDependencyCheck from '../../../../tools/vite-css-dependency';
 import viteConfig from '../../vite.config.wc';
 
 export default defineConfig(env =>
@@ -22,6 +23,11 @@ export default defineConfig(env =>
         }
       }
     },
+    plugins: [
+      vitePluginCssDependencyCheck(
+        resolve(__dirname, '..', '..', '..', '..', 'dist', 'solid-build', 'index.css')
+      )
+    ],
     publicDir: resolve(__dirname, '..', 'public')
   })
 );

@@ -7,11 +7,11 @@
     "build": "pnpm build:app && pnpm build:wc",
     "build:app": "vite build src/builds/build-app/solid",
     "build:wc": "vite build src/builds/build-app/wc",
-    "dev": "vite",
+    "dev": "vite src/builds/build-app/solid --host --open",
     "prettier": "prettier src -c",
     "prettier:fix": "prettier . -w",
     "preview": "vite preview --outDir dist/solid-build",
-    "preview:wc": "vite preview --outDir dist/production",
+    "preview:wc": "vite preview --outDir dist/production --open",
     "test": "vitest run --coverage",
     "test:watch": "vitest --coverage"
   },
@@ -23,7 +23,7 @@
     "@types/node": "^25.0.3",
     "@vitest/coverage-v8": "4.0.16",
     "component-register": "^0.8.8",
-    "jsdom": "^25.0.1",
+    "jsdom": "^27.4.0",
     "msw": "^2.12.7",
     "prettier": "3.7.4",
     "solid-devtools": "^0.34.3",
@@ -36,6 +36,7 @@
     "vitest": "^4.0.0"
   },
   "dependencies": {
+    "@solid-primitives/destructure": "^0.2.2",
     "solid-js": "^1.9.5"
   }
 }
