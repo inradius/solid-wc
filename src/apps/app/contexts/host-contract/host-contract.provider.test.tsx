@@ -1,11 +1,48 @@
-import { HostContractProvider } from '@app/contexts';
 import { render } from '@solidjs/testing-library';
+import { Component } from 'solid-js';
+import { HostContractProvider, useHostContractContext } from '@app/contexts';
+
+const HostProviderTest: Component = () => {
+  const { description, title } = useHostContractContext();
+
+  return (
+    <div>
+      <p data-testid="host-contract-title">{title()}</p>
+      <p data-testid="host-contract-description">{description()}</p>
+    </div>
+  );
+};
 
 describe('<HostContractProvider />', () => {
-  it('should', () => {
-    const { debug, unmount } = render(() => <HostContractProvider title="Testing" />);
-    console.log(debug());
-    expect(true).toBeTruthy();
+  it('should initialize the host contract with default props', () => {
+    const { getByTestId, unmount } = render(() => (
+      <HostContractProvider>
+        <HostProviderTest />
+      </HostContractProvider>
+    ));
+    expect(getByTestId('host-contract-title')).toHaveTextContent('Hello World');
+    expect(getByTestId('host-contract-description')).toHaveTextContent(
+      'A Solid.js web component scaffold.'
+    );
     unmount();
+  });
+
+  it('should initialize the host contract with custom props', () => {
+    const { getByTestId, unmount } = render(() => (
+      <HostContractProvider description="A custom description." title="Custom Title">
+        <HostProviderTest />
+      </HostContractProvider>
+    ));
+    expect(getByTestId('host-contract-title')).toHaveTextContent('Custom Title');
+    expect(getByTestId('host-contract-description')).toHaveTextContent(
+      'A custom description.'
+    );
+    unmount();
+  });
+
+  it('should throw an error when context is used without provider', () => {
+    expect(() => render(() => <HostProviderTest />)).toThrowError(
+      'Host contract context not found.'
+    );
   });
 });

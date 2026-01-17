@@ -1,4 +1,4 @@
-import { Component, Show } from 'solid-js';
+import { Component } from 'solid-js';
 import {
   HostContractProvider,
   hostContractProps,
@@ -7,11 +7,12 @@ import {
 import './index.css';
 
 const AppCore: Component = () => {
-  const { title } = useHostContractContext();
+  const { description, title } = useHostContractContext();
 
   return (
     <div class="app-container">
-      <Show when={title()}>{derivedTitle => <h1>{derivedTitle()}</h1>}</Show>
+      <h1>{title()}</h1>
+      <p>{description()}</p>
     </div>
   );
 };
