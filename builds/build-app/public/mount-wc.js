@@ -52,6 +52,8 @@
       .then(() => {
         console.log('<solid-wc> is ready to use');
         document.dispatchEvent(new CustomEvent('solid-wc-ready'));
+        const root = document.querySelector('#root');
+        root.innerHTML = '<solid-wc></solid-wc>';
       })
       .catch(error => {
         console.error('Error initializing Solid Web Component:', error);

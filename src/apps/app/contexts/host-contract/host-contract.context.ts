@@ -1,6 +1,6 @@
 import { hostContractProps } from '@app/contexts';
+import { type Accessor, createContext, useContext } from 'solid-js';
 import type { Spread } from '@solid-primitives/destructure';
-import { createContext, useContext, type Accessor } from 'solid-js';
 
 export const HostContractContext =
   createContext<Accessor<Spread<typeof hostContractProps>>>();

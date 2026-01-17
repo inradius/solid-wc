@@ -1,7 +1,7 @@
 import { existsSync } from 'fs';
 import { Plugin } from 'vite';
 
-const vitePluginCssDependencyCheck = (cssPath: string): Plugin => ({
+const vitePluginInjectComputedStyles = (cssPath: string): Plugin => ({
   name: 'check-css-dependency',
   buildStart() {
     if (!existsSync(cssPath)) {
@@ -11,7 +11,7 @@ const vitePluginCssDependencyCheck = (cssPath: string): Plugin => ({
           '  ERROR: Missing CSS dependency\n' +
           '═══════════════════════════════════════════════════════════════\n' +
           '\n' +
-          '  The file "dist/solid-build/index.css" does not exist.\n' +
+          `  The file "${cssPath}" does not exist.\n` +
           '\n' +
           '  Please run "pnpm build:app" first to generate the required\n' +
           '  CSS file before building the web component.\n' +
@@ -24,4 +24,4 @@ const vitePluginCssDependencyCheck = (cssPath: string): Plugin => ({
   }
 });
 
-export default vitePluginCssDependencyCheck;
+export default vitePluginInjectComputedStyles;

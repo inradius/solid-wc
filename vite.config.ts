@@ -5,7 +5,7 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 
 const viteConfig = ({ mode }: ConfigEnv) =>
   defineConfig({
-    plugins: [solidPlugin(), tsconfigPaths()],
+    plugins: [devtools(), solidPlugin({ dev: mode === 'development' }), tsconfigPaths()],
     server: { port: 3000 },
     build: {
       target: 'ESNext',

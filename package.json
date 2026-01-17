@@ -4,39 +4,51 @@
   "description": "A Solid.js web component scaffold.",
   "type": "module",
   "scripts": {
-    "build": "pnpm build:app && pnpm build:wc",
-    "build:app": "vite build src/builds/build-app/solid",
-    "build:wc": "vite build src/builds/build-app/wc",
-    "dev": "vite src/builds/build-app/solid --host --open",
+    "build": "pnpm build:app:solid && pnpm build:app:wc",
+    "build:app:solid": "vite build builds/build-app/app",
+    "build:app:wc": "vite build builds/build-app/wc",
+    "dev": "vite builds/build-app/app --host --open",
+    "lint": "eslint src",
     "prettier": "prettier src -c",
-    "prettier:fix": "prettier . -w",
-    "preview": "vite preview --outDir dist/solid-build",
-    "preview:wc": "vite preview --outDir dist/production --open",
+    "prettier:fix": "prettier src -w",
+    "preview": "vite preview --outDir dist/qa --open",
     "test": "vitest run --coverage",
     "test:watch": "vitest --coverage"
   },
   "license": "MIT",
   "devDependencies": {
-    "@ianvs/prettier-plugin-sort-imports": "^4.7.0",
+    "@eslint/js": "^9.39.2",
+    "@solid-primitives/destructure": "^0.2.2",
     "@solidjs/testing-library": "^0.8.10",
     "@testing-library/jest-dom": "^6.6.3",
+    "@trivago/prettier-plugin-sort-imports": "^6.0.2",
     "@types/node": "^25.0.3",
     "@vitest/coverage-v8": "4.0.16",
     "component-register": "^0.8.8",
+    "eslint": "^9.39.2",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-solid": "^0.14.5",
+    "filemanager-plugin": "^2.9.0",
+    "jiti": "^2.6.1",
     "jsdom": "^27.4.0",
     "msw": "^2.12.7",
     "prettier": "3.7.4",
+    "rollup": "^4.55.1",
     "solid-devtools": "^0.34.3",
     "solid-element": "^1.9.1",
+    "solid-js": "^1.9.5",
     "terser": "^5.44.1",
     "typescript": "~5.9.3",
+    "typescript-eslint": "^8.53.0",
     "vite": "^7.1.4",
     "vite-plugin-solid": "2.11.9",
     "vite-tsconfig-paths": "^6.0.3",
     "vitest": "^4.0.0"
   },
-  "dependencies": {
-    "@solid-primitives/destructure": "^0.2.2",
-    "solid-js": "^1.9.5"
+  "msw": {
+    "workerDirectory": [
+      "src/builds/build-app/public"
+    ]
   }
 }
