@@ -1,6 +1,6 @@
 import { HostContractContext } from '@app/contexts';
 import { destructure } from '@solid-primitives/destructure';
-import { createMemo, mergeProps, ParentComponent, splitProps } from 'solid-js';
+import { ParentComponent, createMemo, mergeProps, splitProps } from 'solid-js';
 
 export const hostContractProps = {
   title: 'Hello World'

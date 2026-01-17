@@ -17,7 +17,7 @@
     },
     "strict": true,
     "target": "esnext",
-    "types": ["vite/client", "@testing-library/jest-dom"]
+    "types": ["@testing-library/jest-dom", "node", "vite/client"]
   },
-  "include": ["dist", "src", "tools"]
+  "include": ["builds", "dist", "src", "tools"]
 }

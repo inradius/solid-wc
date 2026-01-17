@@ -1,6 +1,7 @@
 /* @refresh reload */
 import App from '@app';
 import { render } from 'solid-js/web';
+import { hostContractProps } from '@app/contexts';
 
 const root = document.getElementById('root');
 
@@ -14,4 +15,13 @@ const enableMocking = async () => {
   devAppServer.start({ onUnhandledRequest: 'bypass' });
 };
 
-enableMocking().finally(() => render(() => <App />, root!));
+enableMocking().finally(() =>
+  render(
+    (
+      props: Partial<typeof hostContractProps> = {
+        title: 'Hello Development Mode'
+      }
+    ) => <App {...props} />,
+    root!
+  )
+);

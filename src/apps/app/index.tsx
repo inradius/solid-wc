@@ -1,21 +1,25 @@
-import { HostContractProvider, useHostContractContext } from '@app/contexts';
-import { Component } from 'solid-js';
+import { Component, Show } from 'solid-js';
+import {
+  HostContractProvider,
+  hostContractProps,
+  useHostContractContext
+} from '@app/contexts';
 import './index.css';
 
-const App: Component = () => {
+const AppCore: Component = () => {
   const { title } = useHostContractContext();
 
   return (
     <div class="app-container">
-      <h1>{title()}</h1>
+      <Show when={title()}>{derivedTitle => <h1>{derivedTitle()}</h1>}</Show>
     </div>
   );
 };
 
-const AppCore: Component = () => (
-  <HostContractProvider>
-    <App />
+const App: Component<Partial<typeof hostContractProps>> = props => (
+  <HostContractProvider {...props}>
+    <AppCore />
   </HostContractProvider>
 );
 
-export default AppCore;
+export default App;
