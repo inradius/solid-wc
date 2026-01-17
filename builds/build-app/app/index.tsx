@@ -19,7 +19,7 @@ enableMocking().finally(() =>
   render(
     (
       props: Partial<typeof hostContractProps> = {
-        title: 'Hello Development Mode'
+        heading: 'Hello Development Mode'
       }
     ) => <App {...props} />,
     root!

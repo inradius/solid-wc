@@ -7,11 +7,11 @@ import {
 import './index.css';
 
 const AppCore: Component = () => {
-  const { description, title } = useHostContractContext();
+  const { description, heading } = useHostContractContext();
 
   return (
     <div class="app-container">
-      <h1>{title()}</h1>
+      <h1>{heading()}</h1>
       <p>{description()}</p>
     </div>
   );

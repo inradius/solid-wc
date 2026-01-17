@@ -1,18 +1,33 @@
-export const createReactiveProps = <T extends Record<string, unknown>>(
-  defaults: T,
-  props: Partial<T>
-) => {
-  return Object.keys(defaults).reduce(
-    (acc, key) => {
-      const typedKey = key as keyof T;
-      acc[typedKey] = () => {
-        const propValue = props[typedKey];
-        return propValue !== undefined && propValue !== 'undefined'
-          ? propValue
-          : defaults[typedKey];
-      };
-      return acc;
-    },
-    {} as { [K in keyof T]: () => T[K] }
-  );
-};
+/**
+ * Define the allowed host contract props for the web component.
+ * Prevents using HTML global attributes as property names.
+ * @param props
+ * @returns
+ */
+export const defineHostContractProps = <T extends Record<string, unknown>>(
+  props: {
+    [K in keyof T]: K extends
+      | 'accesskey'
+      | 'class'
+      | 'contenteditable'
+      | 'dir'
+      | 'draggable'
+      | 'hidden'
+      | 'id'
+      | 'lang'
+      | 'part'
+      | 'spellcheck'
+      | 'role'
+      | 'slot'
+      | 'style'
+      | 'tabindex'
+      | 'title'
+      | 'translate'
+      ? never
+      : K extends `data-${string}`
+        ? never
+        : K extends `aria-${string}`
+          ? never
+          : T[K];
+  } & T
+): T => props;

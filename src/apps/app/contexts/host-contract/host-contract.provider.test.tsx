@@ -3,11 +3,11 @@ import { Component } from 'solid-js';
 import { HostContractProvider, useHostContractContext } from '@app/contexts';
 
 const HostProviderTest: Component = () => {
-  const { description, title } = useHostContractContext();
+  const { description, heading } = useHostContractContext();
 
   return (
     <div>
-      <p data-testid="host-contract-title">{title()}</p>
+      <p data-testid="host-contract-title">{heading()}</p>
       <p data-testid="host-contract-description">{description()}</p>
     </div>
   );
@@ -29,7 +29,7 @@ describe('<HostContractProvider />', () => {
 
   it('should initialize the host contract with custom props', () => {
     const { getByTestId, unmount } = render(() => (
-      <HostContractProvider description="A custom description." title="Custom Title">
+      <HostContractProvider description="A custom description." heading="Custom Title">
         <HostProviderTest />
       </HostContractProvider>
     ));
