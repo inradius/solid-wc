@@ -1,19 +1,16 @@
 // @ts-check
-import eslint from '@eslint/js';
+import js from '@eslint/js';
 import prettier from 'eslint-config-prettier';
 import importPlugin from 'eslint-plugin-import';
 import solid from 'eslint-plugin-solid/configs/typescript';
 import { defineConfig, globalIgnores } from 'eslint/config';
-import typescriptEslint from 'typescript-eslint';
+import ts from 'typescript-eslint';
 
 export default defineConfig(
   globalIgnores(['builds', 'dist', 'node_modules']),
-  eslint.configs.recommended,
+  js.configs.recommended,
+  ...ts.configs.recommended,
   prettier,
-  ...typescriptEslint.configs.recommended,
-  {
-    ignores: ['builds', 'dist', 'node_modules']
-  },
   {
     files: ['**/*.ts', '**/*.tsx'],
     languageOptions: {

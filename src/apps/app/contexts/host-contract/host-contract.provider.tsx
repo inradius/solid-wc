@@ -3,7 +3,10 @@ import { ParentComponent, createMemo, mergeProps, splitProps } from 'solid-js';
 import { HostContractContext } from '@app/contexts';
 import { defineHostContractProps } from '@app/contexts/host-contract/host-contract.utilities';
 
-export const hostContractProps = defineHostContractProps({
+export const hostContractProps = defineHostContractProps<{
+  heading: string;
+  description: string;
+}>({
   heading: 'Hello World',
   description: 'A Solid.js web component scaffold.'
 });

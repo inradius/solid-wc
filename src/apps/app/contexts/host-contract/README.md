@@ -47,6 +47,7 @@ export const hostContractProps = defineHostContractProps({
 ```
 
 The type system will automatically:
+
 - Validate that property names don't conflict with HTML attributes
 - Provide full TypeScript inference
 - Generate reactive accessors via `destructure`
