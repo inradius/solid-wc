@@ -2,12 +2,12 @@
 import js from '@eslint/js';
 import prettier from 'eslint-config-prettier';
 import importPlugin from 'eslint-plugin-import';
-import solid from 'eslint-plugin-solid/configs/typescript';
+import solidPlugin from 'eslint-plugin-solid/configs/typescript';
 import { defineConfig, globalIgnores } from 'eslint/config';
 import ts from 'typescript-eslint';
 
 export default defineConfig(
-  globalIgnores(['builds', 'dist', 'node_modules']),
+  globalIgnores(['builds', 'coverage', 'dist', 'node_modules']),
   js.configs.recommended,
   ...ts.configs.recommended,
   prettier,
@@ -28,13 +28,10 @@ export default defineConfig(
       import: importPlugin
     }
   },
+  // @ts-expect-error - eslint-plugin-solid types don't fully match ESLint v9 flat config
   {
     files: ['src/**/*.tsx'],
     ignores: ['**/*.stories.tsx'],
-    plugins: {
-      // @ts-expect-error - eslint-plugin-solid does not support ESLint v9 flat config
-      solid: solid.plugins.solid
-    },
-    rules: solid.rules
+    ...solidPlugin
   }
 );
