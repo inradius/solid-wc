@@ -37,7 +37,7 @@
     "rollup": "^4.55.3",
     "solid-devtools": "^0.34.5",
     "solid-element": "^1.9.1",
-    "solid-js": "^1.9.10",
+    "solid-js": "^1.9.11",
     "terser": "^5.46.0",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.53.0",
