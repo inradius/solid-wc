@@ -18,6 +18,7 @@
   "license": "MIT",
   "devDependencies": {
     "@eslint/js": "^9.39.2",
+    "@inradius/solid-wc-css-mixin": "^1.0.2",
     "@solid-primitives/destructure": "^0.2.2",
     "@solidjs/testing-library": "^0.8.10",
     "@testing-library/jest-dom": "^6.9.1",
