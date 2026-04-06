@@ -1,9 +1,9 @@
-import { Component } from 'solid-js';
 import {
-  HostContractProvider,
   hostContractProps,
+  HostContractProvider,
   useHostContractContext
 } from '@app/contexts';
+import { Component } from 'solid-js';
 import './index.css';
 
 const AppCore: Component = () => {

@@ -1,24 +1,18 @@
-import { configDefaults, defineConfig, mergeConfig } from 'vitest/config';
+import { defineConfig, mergeConfig } from 'vitest/config';
+import sharedConfig from '@inradius/solid-wc-utils-config/vitest.base';
 import viteConfig from './vite.config';
 
 const vitestConfig = defineConfig(env =>
   mergeConfig(
-    viteConfig(env),
-    defineConfig({
-      test: {
-        clearMocks: true,
-        coverage: {
-          enabled: true,
-          exclude: configDefaults.coverage.exclude!.concat([
-            'src/**/*.stories.*',
-            'build/**/*'
-          ])
-        },
-        environment: 'jsdom',
-        globals: true,
-        include: ['./src/**/*.{test,spec}.{js,cjs,mjs,jsx,ts,cts,mts,tsx}']
-      }
-    })
+    sharedConfig,
+    mergeConfig(
+      viteConfig(env),
+      defineConfig({
+        test: {
+          include: ['./src/**/*.{test,spec}.{js,cjs,mjs,jsx,ts,cts,mts,tsx}']
+        }
+      })
+    )
   )
 );
 

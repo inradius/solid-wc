@@ -5,10 +5,8 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 
 const viteConfig = ({ mode }: ConfigEnv) =>
   defineConfig({
-    plugins: [devtools(), solidPlugin({ dev: mode === 'development' }), tsconfigPaths()],
-    server: { port: 3000 },
     build: {
-      target: 'ESNext',
+      emptyOutDir: false,
       rollupOptions: {
         output: {
           assetFileNames: '[name][extname]',
@@ -16,11 +14,13 @@ const viteConfig = ({ mode }: ConfigEnv) =>
           entryFileNames: '[name]-[hash].js'
         }
       },
-      emptyOutDir: false
+      target: 'ESNext'
     },
+    plugins: [devtools(), solidPlugin({ dev: mode === 'development', hot: mode === 'development' }), tsconfigPaths()],
     resolve: {
       conditions: ['browser', 'development']
-    }
+    },
+    server: { port: 3000 }
   });
 
 export default viteConfig;
