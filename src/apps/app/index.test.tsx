@@ -1,5 +1,5 @@
-import { render } from '@solidjs/testing-library';
 import App from '@app/index';
+import { render } from '@solidjs/testing-library';
 
 describe('<App />', () => {
   it('should render the app with default props', async () => {
@@ -11,7 +11,7 @@ describe('<App />', () => {
 
   it('should render the app with custom props', async () => {
     const { findByText, unmount } = render(() => (
-      <App heading="Custom Heading" description="Custom description." />
+      <App description="Custom description." heading="Custom Heading" />
     ));
     expect(await findByText('Custom Heading')).toBeInTheDocument();
     expect(await findByText('Custom description.')).toBeInTheDocument();
